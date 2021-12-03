@@ -97,7 +97,7 @@ export class SendWithEncodeAction extends Hub.Action {
     const plan = request.scheduledPlan
     const message = request.formParams["messaage"] ? request.formParams["messaage"] : "Results are attached."
     const subject = request.formParams.subject || (plan && plan.title ? plan.title : "Looker")
-    const from = request.formParams.sender ? request.formParams.sender : "Looker <noreply@lookermail.com>"
+    const from = request.params.sender ? request.params.sender : "Looker <noreply@lookermail.com>"
 
 
     const msg = new helpers.classes.Mail({
