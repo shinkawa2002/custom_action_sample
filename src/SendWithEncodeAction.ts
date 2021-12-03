@@ -51,7 +51,8 @@ export class SendWithEncodeAction extends Hub.Action {
         type: "select",
         options: [
           {name: "Shift_JIS", label: "Shift_JIS"},
-          {name: "Windows-31j,", label: "Windows-31j"}    
+          {name: "Windows-31j", label: "Windows-31j"},
+          {name: "utf8b", label: "UTF8 with BOM"},
         ]
       },
       {
@@ -84,7 +85,14 @@ export class SendWithEncodeAction extends Hub.Action {
 
     zipEntries.forEach((entry: any) => {
       const decoded = iconv.decode(Buffer.from(zip.readAsText(entry), 'utf8'), 'utf8')
-      const encoded = iconv.encode(decoded, request.formParams.encoding)
+      let encFormat = request.formParams.encoding
+      let addBom = false
+      if (encFormat === "utf8b") {
+        addBom = true
+        encFormat = "utf8"
+      }
+      // const encoded = iconv.encode(decoded, request.formParams.encoding)
+      const encoded = iconv.encode(decoded, encFormat, {addBOM: addBom})
       wZip.addFile(entry.entryName, Buffer.alloc(encoded.length, encoded))
     })
 
