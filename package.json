@@ -1,0 +1,27 @@
+{
+  "name": "custom-action-hub-example",
+  "version": "1.0.0",
+  "description": "This is an example custom action hub that can be used to create a Looker Action Hub server that only includes your own custom actions.",
+  "main": "index.js",
+  "repository": "https://github.com/shinkawa2002/send_with_encode",
+  "author": "Looker <opensource@looker.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/ts-node ./src/index.ts",
+    "generate-api-key": "./node_modules/.bin/ts-node ./bin/generate_key.ts"
+  },
+  "dependencies": {
+    "@sendgrid/helpers": "^7.6.0",
+    "@sendgrid/mail": "^7.4.7",
+    "@types/adm-zip": "^0.4.34",
+    "adm-zip": "^0.5.9",
+    "crypto": "^1.0.1",
+    "iconv-lite": "^0.6.3",
+    "looker-action-hub": "looker/actions",
+    "ts-node": "^6.0.5",
+    "typescript": "^3.0.1"
+  },
+  "engines": {
+    "node": "12.13.0"
+  }
+}
