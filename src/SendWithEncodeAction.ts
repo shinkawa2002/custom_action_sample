@@ -11,6 +11,9 @@ export class SendWithEncodeAction extends Hub.Action {
   label = "Send with Encoding"
   description = "Send File with Re-Encoding"
   supportedActionTypes = [Hub.ActionType.Cell, Hub.ActionType.Query, Hub.ActionType.Dashboard]
+  // supported_formats = ["csv_zip"]
+  supportedFormats = [Hub.ActionFormat.CsvZip]
+  
   params = [
     {
       name: "send_grid_api_key",
